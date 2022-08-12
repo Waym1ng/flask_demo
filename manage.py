@@ -8,6 +8,19 @@ from hello.models.models import Message
 app = create_app("setting.dev")
 manager = Manager(app)
 
+"""
+404 Exception 异常捕获处理
+"""
+from flask import render_template
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('errors/404.html'), 404
+
+@app.errorhandler(Exception)
+def internal_server_error(e):
+    print("* Server Error: ", e)
+    return render_template('errors/500.html')
+
 '''
 自定义命令方法: 1. manager.add_command('func', Func()) 2. @manager.command 3. @manager.option('-n', '--name', help='Your name')
 使用: python manage.py initDB
@@ -33,6 +46,26 @@ def dropDB():
 def makeMessage(count):
     """
     生成message数据
+    """
+    from faker import Faker
+
+    fake = Faker(locale='zh_CN')
+    click.echo('Working...')
+
+    for i in range(int(count)):
+        message = Message(
+            name=fake.name(),
+            body=fake.sentence(),
+            timestamp=fake.date_time_this_year()
+        )
+        db.session.add(message)
+    db.session.commit()
+    click.echo('Created {} fake data.'.format(count))
+
+@manager.option('-c', '--count', help='Quantity of data')
+def makeShowData(count):
+    """
+    生成show data数据
     """
     from faker import Faker
 

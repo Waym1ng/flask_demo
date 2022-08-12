@@ -18,8 +18,8 @@ def create_app(config_name="setting.dev"):
     # 加载数据库
     db.init_app(app)
     # 注册蓝图
-    from hello.user import user_bp
-    app.register_blueprint(user_bp)
+    from hello.msg import msg_bp
+    app.register_blueprint(msg_bp)
     from hello.home import home_bp
     app.register_blueprint(home_bp)
     # 可选参数
