@@ -5,6 +5,7 @@ from hello.utils.orm import db
 from hello.models.models import Message
 from hello.msg import msg_bp
 
+
 @msg_bp.route('/', methods=['GET', 'POST'])
 def index():
     form = HelloForm()
@@ -18,4 +19,4 @@ def index():
         return redirect(url_for('msg.index'))
 
     messages = Message.query.order_by(Message.timestamp.desc()).all()
-    return render_template('index.html', form=form, messages=messages)
+    return render_template('msg/index.html', form=form, messages=messages)

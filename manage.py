@@ -3,7 +3,7 @@ import click
 
 from flask_script  import Manager
 from hello import create_app, db
-from hello.models.models import Message
+from hello.models.models import Message, ShowData
 
 app = create_app("setting.dev")
 manager = Manager(app)
@@ -16,10 +16,11 @@ from flask import render_template
 def page_not_found(e):
     return render_template('errors/404.html'), 404
 
-@app.errorhandler(Exception)
-def internal_server_error(e):
-    print("* Server Error: ", e)
-    return render_template('errors/500.html')
+# 调试时打开可能会看不出什么错误
+# @app.errorhandler(Exception)
+# def internal_server_error(e):
+#     print("* Server Error: ", e)
+#     return render_template('errors/500.html')
 
 '''
 自定义命令方法: 1. manager.add_command('func', Func()) 2. @manager.command 3. @manager.option('-n', '--name', help='Your name')
@@ -67,18 +68,25 @@ def makeShowData(count):
     """
     生成show data数据
     """
+    if not count:
+        count = 20
     from faker import Faker
 
     fake = Faker(locale='zh_CN')
     click.echo('Working...')
 
     for i in range(int(count)):
-        message = Message(
-            name=fake.name(),
-            body=fake.sentence(),
+        show_data = ShowData(
+            uuid = fake.uuid4(),
+            name = fake.name(),
+            ssn = fake.ssn(),
+            phone = fake.phone_number(),
+            email = fake.free_email(),
+            job = fake.job(),
+            address = fake.address(),
             timestamp=fake.date_time_this_year()
         )
-        db.session.add(message)
+        db.session.add(show_data)
     db.session.commit()
     click.echo('Created {} fake data.'.format(count))
 

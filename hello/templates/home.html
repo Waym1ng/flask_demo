@@ -1,7 +1,24 @@
 {% extends "base.html" %}
 
-{% block title %}404 Error{% endblock %}
+{% block title %}HOME{% endblock %}
 
 {% block content %}
-    <p class="text-center"><a href="{{ url_for('msg.index') }}">前往</a></p>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" style="width:800px">
+        <div class="carousel-item active">
+          <img src="https://img.cc0.cn/pixabay/2019102905525057048.jpg!860.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://img.cc0.cn/pixabay/2019102004484219830.jpg!860.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://img.cc0.cn/pixabay/2019102217203816016.jpg!860.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+    </div>
 {% endblock %}

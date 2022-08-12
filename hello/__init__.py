@@ -22,6 +22,8 @@ def create_app(config_name="setting.dev"):
     app.register_blueprint(msg_bp)
     from hello.home import home_bp
     app.register_blueprint(home_bp)
+    from hello.show import show_bp
+    app.register_blueprint(show_bp)
     # 可选参数
     app.jinja_env.trim_blocks = True
     app.jinja_env.lstrip_blocks = True

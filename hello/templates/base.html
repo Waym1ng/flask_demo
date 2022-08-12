@@ -11,11 +11,23 @@
 <body>
 <main class="container">
     <header>
-        <h1 class="text-center display-4">
+        <h1 class="text-left display-4">
             <a href="{{ url_for('msg.index') }}" class="text-success"><strong>Hello Flask</strong></a>
             <small class="text-muted sub-title">this is a demo!</small>
         </h1>
     </header>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('home.home') }}">home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('msg.index') }}">msg</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('show.show') }}">show</a>
+      </li>
+    </ul>
+    <br />
     {% block content %}{% endblock %}
     <footer class="text-center">
         {% block footer %}
