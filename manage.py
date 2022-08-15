@@ -8,20 +8,6 @@ from hello.models.models import Message, ShowData
 app = create_app("setting.dev")
 manager = Manager(app)
 
-"""
-404 Exception 异常捕获处理
-"""
-from flask import render_template
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('errors/404.html'), 404
-
-# 调试时打开可能会看不出什么错误
-# @app.errorhandler(Exception)
-# def internal_server_error(e):
-#     print("* Server Error: ", e)
-#     return render_template('errors/500.html')
-
 '''
 自定义命令方法: 1. manager.add_command('func', Func()) 2. @manager.command 3. @manager.option('-n', '--name', help='Your name')
 使用: python manage.py initDB
