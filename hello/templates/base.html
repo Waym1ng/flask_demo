@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% from 'bootstrap/nav.html' import render_nav_item %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,17 +17,36 @@
             <small class="text-muted sub-title">this is a demo!</small>
         </h1>
     </header>
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('home.home') }}">home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('msg.index') }}">msg</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('show.show') }}">show</a>
-      </li>
-    </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="">
+                <img src="{{ url_for('static', filename='favicon.ico') }}" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+                    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <div class="navbar-nav mr-auto">
+                    {{ render_nav_item('home.index', '主页') }}
+                    {{ render_nav_item('msg.index', '消息') }}
+                    {{ render_nav_item('show.index', '展示') }}
+<!--                    <form class="form-inline my-2 my-lg-0" action="">-->
+<!--                        <input type="text" name="q" class="form-control mr-sm-1" placeholder="Photo, tag or user"-->
+<!--                               required>-->
+<!--                        <button class="btn btn-light my-2 my-sm-0" type="submit">-->
+<!--                            <span class="oi oi-magnifying-glass"></span>-->
+<!--                        </button>-->
+<!--                    </form>-->
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a class="btn btn-outline-primary" href="">Login</a>&nbsp;&nbsp;
+                    <a class="btn btn-primary" href="">Join us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <br />
     {% block content %}{% endblock %}
     <footer class="text-center">

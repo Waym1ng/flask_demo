@@ -6,6 +6,6 @@ from hello.show import show_bp
 
 
 @show_bp.route('/', methods=['GET'])
-def show():
+def index():
     data = ShowData.query.order_by(ShowData.id.desc()).all()
     return render_template('show/show.html', data=data)
