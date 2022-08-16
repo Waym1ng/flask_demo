@@ -3,6 +3,10 @@
 {% block title %}HOME{% endblock %}
 
 {% block content %}
+    <h1 class="text-left display-4">
+        <a href="{{ url_for('msg.index') }}" class="text-success"><strong>Hello Flask</strong></a>
+        <small class="text-muted sub-title">this is a demo!</small>
+    </h1>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

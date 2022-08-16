@@ -10,14 +10,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
 </head>
 <body>
-<main class="container">
-    <header>
-        <h1 class="text-left display-4">
-            <a href="{{ url_for('msg.index') }}" class="text-success"><strong>Hello Flask</strong></a>
-            <small class="text-muted sub-title">this is a demo!</small>
-        </h1>
-    </header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header>
+    <nav class="custom-nav navbar navbar-expand-lg navbar-light bg-light ">
         <div class="container">
             <a class="navbar-brand" href="">
                 <img src="{{ url_for('static', filename='favicon.ico') }}" alt="">
@@ -47,17 +41,18 @@
             </div>
         </div>
     </nav>
-    <br />
+</header>
+<main class="container">
     {% block content %}{% endblock %}
-    <footer class="text-center">
-        {% block footer %}
-            <small> &copy; 2022 <a href="https://waym1ng.github.io/" title="Welcome to my blog">Ming Ming` Blog</a> /
-                <a href="https://github.com/Waym1ng" title="Fork me on GitHub">GitHub</a> /
-            </small>
-            <p><a id="bottom" href="#" title="Go Top">&uarr;</a></p>
-        {% endblock %}
-    </footer>
 </main>
+<footer class="text-center">
+    {% block footer %}
+        <small> &copy; 2022 <a href="https://waym1ng.github.io/" title="Welcome to my blog">Ming Ming` Blog</a> /
+            <a href="https://github.com/Waym1ng" title="Fork me on GitHub">GitHub</a> /
+        </small>
+        <p><a id="bottom" href="#" title="Go Top">&uarr;</a></p>
+    {% endblock %}
+</footer>
 
 <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>

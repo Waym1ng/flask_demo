@@ -7,6 +7,10 @@ p {
     word-wrap: break-word;
 }
 
+.custom-nav {
+    background-color: rgb(245, 245, 245) !important;
+}
+
 .container {
     max-width: 1280px !important;
 }
@@ -16,12 +20,7 @@ p {
 }
 
 header {
-    margin: 50px 0 40px 0;
-}
-
-header h1 {
-    font-size: 60px;
-    font-weight: bold;
+    margin: 0 0 40px 0;
 }
 
 .sub-title {
@@ -32,10 +31,6 @@ header h1 {
     .sub-title {
         display: block;
     }
-}
-
-header a {
-    text-decoration: none !important;
 }
 
 footer {
