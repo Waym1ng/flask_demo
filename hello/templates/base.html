@@ -7,52 +7,38 @@
     <title>{% block title %}Hello Flask!{% endblock %}</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cover.css') }}" type="text/css">
 </head>
 <body>
-<header>
-    <nav class="custom-nav navbar navbar-expand-lg navbar-light bg-light ">
-        <div class="container">
-            <a class="navbar-brand" href="">
-                <img src="{{ url_for('static', filename='favicon.ico') }}" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
-                    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <div class="navbar-nav mr-auto">
-                    {{ render_nav_item('home.index', '主页') }}
-                    {{ render_nav_item('msg.index', '消息') }}
-                    {{ render_nav_item('show.index', '展示') }}
-<!--                    <form class="form-inline my-2 my-lg-0" action="">-->
-<!--                        <input type="text" name="q" class="form-control mr-sm-1" placeholder="Photo, tag or user"-->
-<!--                               required>-->
-<!--                        <button class="btn btn-light my-2 my-sm-0" type="submit">-->
-<!--                            <span class="oi oi-magnifying-glass"></span>-->
-<!--                        </button>-->
-<!--                    </form>-->
-                </div>
-                <div class="navbar-nav ml-auto">
-                    <a class="btn btn-outline-primary" href="">Login</a>&nbsp;&nbsp;
-                    <a class="btn btn-primary" href="">Join us</a>
-                </div>
-            </div>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">Cover</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="{{ url_for('home.index') }}">Home</a>
+                <a class="nav-link" href="{{ url_for('msg.index') }}">Features</a>
+                <a class="nav-link" href="{{ url_for('show.index') }}">Contact</a>
+            </nav>
+<!--            <div class="navbar-nav ml-auto">-->
+<!--                <a class="btn btn-outline-primary" href="{{ url_for('home.login_index') }}">Login</a>&nbsp;&nbsp;-->
+<!--                <a class="btn btn-primary" href="">Join us</a>-->
+<!--            </div>-->
         </div>
-    </nav>
-</header>
-<main class="container">
-    {% block content %}{% endblock %}
-</main>
-<footer class="text-center">
-    {% block footer %}
-        <small> &copy; 2022 <a href="https://waym1ng.github.io/" title="Welcome to my blog">Ming Ming` Blog</a> /
-            <a href="https://github.com/Waym1ng" title="Fork me on GitHub">GitHub</a> /
-        </small>
-        <p><a id="bottom" href="#" title="Go Top">&uarr;</a></p>
-    {% endblock %}
-</footer>
+    </header>
+
+    <main role="main" class="inner cover">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        {% block footer %}
+            <small> &copy; 2022 <a href="https://waym1ng.github.io/" title="Welcome to my blog">Ming Ming` Blog</a> /
+                <a href="https://github.com/Waym1ng" title="Fork me on GitHub">GitHub</a> /
+            </small>
+        {% endblock %}
+    </footer>
+</div>
 
 <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
